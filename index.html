@@ -62,6 +62,44 @@
             .attr('cy', d => yScale(d.MPG))
             .attr('cx', d => xScale(d.Weight))
             .attr('r', d => xScale(d.Weight/100))
+        
+        const xAxis = axisBottom(xScale)
+          .tickSize(-innerHeight)
+          .tickPadding(15);
+
+        const yAxis = axisLeft(yScale)
+          .tickSize(-innerWidth)
+          .tickPadding(10);
+
+        const yAxisG = g.append('g').call(yAxis);
+        yAxisG.selectAll('.domain').remove();
+
+        yAxisG.append('text')
+            .attr('class', 'axis-label')
+            .attr('y', -93)
+            .attr('x', -innerHeight / 2)
+            .attr('fill', 'black')
+            .attr('transform', `rotate(-90)`)
+            .attr('text-anchor', 'middle')
+            .text(yAxisLabel);
+
+        const xAxisG = g.append('g').call(xAxis)
+          .attr('transform', `translate(0,${innerHeight})`);
+
+        xAxisG.select('.domain').remove();
+
+        xAxisG.append('text')
+            .attr('class', 'axis-label')
+            .attr('y', 75)
+            .attr('x', innerWidth / 2)
+            .attr('fill', 'black')
+            .text(xAxisLabel);
+
+        g.selectAll('circle').data(data)
+          .enter().append('circle')
+            .attr('cy', d => yScale(yValue(d)))
+            .attr('cx', d => xScale(xValue(d)))
+            .attr('r', circleRadius);
       };
       
       d3.csv("cars-sample.csv").then(data => {
