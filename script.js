@@ -1,11 +1,11 @@
 td3.csv('cars-sample.csv', function (data) {
   // Variables
   var body = d3.select('body')
-	var margin = { top: 100, right: 100, bottom: 100, left: 100 }
-	var h = 1000 - margin.top - margin.bottom
-	var w = 1000 - margin.left - margin.right
-	var formatPercent = d3.format('.2%')
-	// Scales
+  var margin = { top: 100, right: 100, bottom: 100, left: 100 }
+  var h = 1000 - margin.top - margin.bottom
+  var w = 1000 - margin.left - margin.right
+  var formatPercent = d3.format('.2%')
+  // Scales
   var colorScale = d3.scale.category20()
   var xScale = d3.scale.linear()
     .domain([
