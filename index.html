@@ -33,9 +33,17 @@
       
       
       const render = data => {
+        const xScale = d3.scaleLinear()
+          .domain([0, 5000])
+          .range([0, width]);
+        
+        const yScale = d3.scaleLinear()
+          .domain([0, 50])
+          .range([0, height]);
+        
         svg.selectAll('circle').data(data)
           .enter().append('circle')
-            .attr('r', 5)
+            .attr('r', d => xScale(d.Weight/100))
       };
       
       d3.csv("cars-sample.csv").then(data => {
