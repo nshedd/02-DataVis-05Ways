@@ -29,21 +29,31 @@
         const innerheight = height - margin.top - margin.bottom;
 
         const xScale = d3.scaleLinear()
-                .domain([1500, 5000])
-                .range([0, innerWidth]);
+          .domain(d3.extent(data, xValue))
+          .range([0, innerWidth])
+          .nice();
 
         const yScale = d3.scaleLinear()
-                .domain([0, 60])
-                .range([innerHeight, 0]);
+          .domain(d3.extent(data, yValue))
+          .range([innerHeight, 0])
+          .nice();
 
-        const f = svg.append('g')
-          .attr('transform', 'translate(${margin.left},$margin.bottom})');
+        const g = svg.append('g')
+  	      .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+        const xAxis = axisBottom(xScale)
+          .tickSize(-innerHeight)
+          .tickPadding(15);
+  
+        const yAxis = axisLeft(yScale)
+          .tickSize(-innerWidth)
+          .tickPadding(10);
 
         svg.selectAll('circle').data(data)
           .enter().append('circle')
             .attr('cy', d => yScale(yValue(d)))
             .attr('cx', d => xScale(xValue(d)))
-            .attr('r', d => d.Weight/500));
+            .attr('r', d => d.Weight/500);
       };
       
       d3.csv("cars-sample.csv").then(data => {
