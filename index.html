@@ -25,10 +25,7 @@
         font-size: 5em;
         fill: #8E8883;
       }
-      .title {
-        font-size: 3.7em;
-        fill: #635F5D;
-      }
+
     </style>
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
@@ -121,7 +118,7 @@
           .enter().append('circle')
             .attr('cy', d => yScale(yValue(d)))
             .attr('cx', d => xScale(xValue(d)))
-            .attr('r', circleRadius);
+            .attr('r', d => d.Weight/100);
       };
       
       d3.csv("cars-sample.csv").then(data => {
