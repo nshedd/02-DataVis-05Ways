@@ -28,11 +28,11 @@
         const innerWidth = width - margin.left - margin.right;
         const innerheight = height - margin.top - margin.bottom;
 
-        const xScale = scaleLinear()
+        const xScale = d3.scaleLinear()
                 .domain([1500, 5000])
                 .range([0, innerWidth]);
 
-        const yScale = scaleLinear()
+        const yScale = d3.scaleLinear()
                 .domain([0, 60])
                 .range([innerHeight, 0]);
 
@@ -44,12 +44,12 @@
             .attr('cy', d => yScale(yValue(d)))
             .attr('cx', d => xScale(xValue(d)))
             .attr('r', d => xScale(xValue(d)/100));
-            };
-
-            d3.csv("cars-sample.csv").then(data => {
-              data.forEach(d => {
-                d.Weight = +d.Weight;
-                d.MPG = +d.MPG;
+      };
+      
+      d3.csv("cars-sample.csv").then(data => {
+        data.forEach(d => {
+          d.Weight = +d.Weight;
+          d.MPG = +d.MPG;
         });
         render(data);
       });
