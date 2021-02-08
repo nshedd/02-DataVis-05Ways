@@ -1,6 +1,3 @@
-
-<script>
-
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 460 - margin.left - margin.right,
@@ -45,6 +42,4 @@ d3.csv("cars-sample.csv", function(data) {
       .style("fill", "#69b3a2")
 
 })
-
-</script>
 
