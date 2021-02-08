@@ -1,4 +1,4 @@
-d3.csv('cars-sample.csv', function (data) {
+td3.csv('cars-sample.csv', function (data) {
   // Variables
   var body = d3.select('body')
 	var margin = { top: 100, right: 100, bottom: 100, left: 100 }
@@ -77,7 +77,7 @@ d3.csv('cars-sample.csv', function (data) {
       .attr('x',w)
       .attr('dy','.71em')
       .style('text-anchor','end')
-      .text('Annualized Standard Deviation')
+      .text('Weight')
   // Y-axis
   svg.append('g')
       .attr('class', 'axis')
@@ -89,5 +89,5 @@ d3.csv('cars-sample.csv', function (data) {
       .attr('y',5)
       .attr('dy','.71em')
       .style('text-anchor','end')
-      .text('Annualized Return')
+      .text('MPG')
 })
