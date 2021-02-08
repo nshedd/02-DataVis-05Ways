@@ -13,34 +13,35 @@
   </head>
   <body>
     <script>
-      const xValue = d => d.Weight;
-      const yValue = d => d.MPG;
-      const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-      const innerWidth = width - margin.left - margin.right;
-      const innerheight = height - margin.top - margin.bottom;
+      const render = data => {
+        const xValue = d => d.Weight;
+        const yValue = d => d.MPG;
+        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        const innerWidth = width - margin.left - margin.right;
+        const innerheight = height - margin.top - margin.bottom;
 
-      const xScale = scaleLinear()
-              .domain([1500, 5000])
-              .range([0, innerWidth]);
+        const xScale = scaleLinear()
+                .domain([1500, 5000])
+                .range([0, innerWidth]);
 
-      const yScale = scaleLinear()
-              .domain([0, 60])
-              .range([innerHeight, 0]);
+        const yScale = scaleLinear()
+                .domain([0, 60])
+                .range([innerHeight, 0]);
 
-      const f = svg.append('g')
-        .attr('transform', 'translate(${margin.left},$margin.bottom})');
+        const f = svg.append('g')
+          .attr('transform', 'translate(${margin.left},$margin.bottom})');
 
-      svg.selectAll('circle').data(data)
-        .enter().append('circle')
-          .attr('cy', d => yScale(yValue(d)))
-          .attr('cx', d => xScale(xValue(d)))
-          .attr('r', d => xScale(xValue(d)/100));
-          };
+        svg.selectAll('circle').data(data)
+          .enter().append('circle')
+            .attr('cy', d => yScale(yValue(d)))
+            .attr('cx', d => xScale(xValue(d)))
+            .attr('r', d => xScale(xValue(d)/100));
+            };
 
-          d3.csv("cars-sample.csv").then(data => {
-            data.forEach(d => {
-              d.Weight = +d.Weight;
-              d.MPG = +d.MPG;
+            d3.csv("cars-sample.csv").then(data => {
+              data.forEach(d => {
+                d.Weight = +d.Weight;
+                d.MPG = +d.MPG;
         });
         render(data);
       });
