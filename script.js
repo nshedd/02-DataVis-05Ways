@@ -84,7 +84,7 @@ td3.csv('cars-sample.csv', function (data) {
       .call(yAxis)
     .append('text') // y-axis Label
       .attr('class','label')
-      .attr('transform','rotate(-90)')
+      .attr('transform','rotate(+90)')
       .attr('x',0)
       .attr('y',5)
       .attr('dy','.71em')
