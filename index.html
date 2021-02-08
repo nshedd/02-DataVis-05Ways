@@ -13,42 +13,20 @@
   </head>
   <body>
     <script>
-      // set the dimensions and margins of the graph
-      var margin = {top: 20, right: 20, bottom: 30, left: 40},
-          width = 960 - margin.left - margin.right,
-          height = 500 - margin.top - margin.bottom;
-      var x = d3.scaleLinear()
-          .range([width, 0]);
-      var y = d3.scaleLinear()
-          .range([height, 0]);
-      
-      // append the svg object to the body of the page
-      // append a 'group' element to 'svg'
-      // moves the 'group' element to the top left margin
-      var svg = d3.select("body").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform", 
-              "translate(" + margin.left + "," + margin.top + ")");
-      
-      
       const render = data => {
-        const xScale = scaleLinear()
+        const xScale = d3.scaleLinear()
           .domain([0, 5000])
   				.range([0, width]);
         
-        const yScale = scaleLinear()
+        const yScale = d3.scaleLinear()
           .domain([0, 50])
         	.range([height, 0]);
   
-  svg.selectAll('circle').data(data)
-    .enter().append('circle')
-  		.attr('cy', d => yScale(d.MPG))
-      .attr('cx', d => xScale(d.Weight))
-      .attr('r', d => xScale(d.Weight/100))
-  		.attr("transform", 
-              "translate(" + margin.left + "," + margin.top + ")");
+        svg.selectAll('circle').data(data)
+          .enter().append('circle')
+            .attr('cy', d => yScale(d.MPG))
+            .attr('cx', d => xScale(d.Weight))
+            .attr('r', d => xScale(d.Weight/100));
       };
       
       d3.csv("cars-sample.csv").then(data => {
