@@ -43,6 +43,8 @@
         
         svg.selectAll('circle').data(data)
           .enter().append('circle')
+            .attr('y', d => yScale(d.MPG))
+            .attr('x', d => xScale(d.Weight))
             .attr('r', d => xScale(d.Weight/100))
       };
       
