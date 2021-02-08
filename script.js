@@ -3,8 +3,18 @@ var margin = { top: 100, right: 100, bottom: 100, left: 100 }
 var h = 1000 - margin.top - margin.bottom
 var w = 1000 - margin.left - margin.right
 
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
 d3.csv('cars-sample.csv', function (data) {
-  // Variables
+  
+	// Variables
   var body = d3.select('body')
   
   // Scales
