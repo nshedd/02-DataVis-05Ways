@@ -29,3 +29,4 @@ d3.csv('cars-sample.csv', function (data) {
     .range([ height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
+}
