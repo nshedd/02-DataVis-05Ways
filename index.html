@@ -41,11 +41,11 @@
         const g = svg.append('g')
   	      .attr('transform', `translate(${margin.left},${margin.top})`);
         
-        const xAxis = axisBottom(xScale)
+        const xAxis = d3.axisBottom(xScale)
           .tickSize(-innerHeight)
           .tickPadding(15);
   
-        const yAxis = axisLeft(yScale)
+        const yAxis = d3.axisLeft(yScale)
           .tickSize(-innerWidth)
           .tickPadding(10);
 
