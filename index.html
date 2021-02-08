@@ -33,6 +33,9 @@
       
       // get the data
       d3.csv("cars-sample.csv").then(data => {
+        data.forEach(d => {
+          d.population = +d.population;
+        });
         console.log(data)
       })
     </script>
