@@ -31,14 +31,20 @@
         .attr("transform", 
               "translate(" + margin.left + "," + margin.top + ")");
       
-      // get the data
+      
+      const render = data => {
+        svg.selectAll('circle').data(data)
+          .enter().append('circle')
+            .attr('r', 5)
+      };
+      
       d3.csv("cars-sample.csv").then(data => {
         data.forEach(d => {
           d.Weight = +d.Weight;
           d.MPG = +d.MPG;
         });
-        console.log(data)
-      })
+        render(data);
+      });
     </script>
   </body>
 </html>
