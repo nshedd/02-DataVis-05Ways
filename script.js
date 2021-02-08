@@ -4,7 +4,7 @@ var h = 1000 - margin.top - margin.bottom
 var w = 1000 - margin.left - margin.right
 
 // append the svg object to the body of the page
-var svg = d3.select('body')
+var svg = d3.select('cars_vis')
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
