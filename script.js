@@ -1,6 +1,7 @@
-td3.csv('cars-sample.csv', function (data) {
+d3.csv('cars-sample.csv', function (data) {
   // Variables
   var body = d3.select('body')
+  // set the dimensions and margins of the graph
   var margin = { top: 100, right: 100, bottom: 100, left: 100 }
   var h = 1000 - margin.top - margin.bottom
   var w = 1000 - margin.left - margin.right
