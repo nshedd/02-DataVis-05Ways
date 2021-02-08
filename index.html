@@ -43,7 +43,7 @@
           .enter().append('circle')
             .attr('cy', d => yScale(yValue(d)))
             .attr('cx', d => xScale(xValue(d)))
-            .attr('r', d => xScale(xValue(d)/100));
+            .attr('r', d => d.Weight/500));
       };
       
       d3.csv("cars-sample.csv").then(data => {
