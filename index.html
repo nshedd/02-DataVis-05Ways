@@ -3,12 +3,19 @@
   <head>
     <title>Making a Bar Chart</title>
     <style> /* set the CSS */
-      .bar { fill: steelblue; }
+      body {
+        margin: 0px;
+        overflow: hidden;
+      }
     </style>
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
   <body>
-    <svg width="960" height="500"></svg>
-    <script type="module" src="script.js"></script>
+    <script>
+      // set the dimensions and margins of the graph
+      var margin = {top: 20, right: 20, bottom: 30, left: 40},
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
+    </script>
   </body>
 </html>
