@@ -14,9 +14,10 @@ var svg = d3.select("#my_dataviz")
 
 // Read the data
 d3.csv('cars-sample.csv', function (data) {
+  
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([0, 4000])
+    .domain([0, 5000])
     .range([ 0, width ]);
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -24,7 +25,7 @@ d3.csv('cars-sample.csv', function (data) {
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 500000])
+    .domain([0, 47])
     .range([ height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
